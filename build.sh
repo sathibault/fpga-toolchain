@@ -8,6 +8,8 @@ set -e
 # -- Toolchain name
 export NAME=fpga-toolchain
 
+rm -f git-commit-lock.txt
+
 # Use the following variables to enable and disable parts of the build
 # If you place a .env file in the root of the repo
 # then _common.sh will source it - you can use this to

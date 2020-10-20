@@ -59,6 +59,8 @@ function git_clone {
     test -e $dir_name || git clone $git_url $dir_name
     git -C $dir_name pull
     git -C $dir_name checkout $git_commit
+    real_commit=$(git -C $dir_name rev-parse HEAD)
+    echo "$dir_name=$real_commit" >> $WORK_DIR/git-commit-lock.txt
     [[ ! -z "$update_submodules" ]] && git -C $dir_name submodule init
     [[ ! -z "$update_submodules" ]] && git -C $dir_name submodule update
     git -C $dir_name log -1
